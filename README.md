@@ -8,7 +8,9 @@
 This project provides support for using [circe][circe] to provide JSON marshallers for
 [Spray][spray]. Note that Spray is no longer being actively maintained, and new projects should
 typically use [Akka HTTP][akka-http] (with [akka-http-circe][akka-http-circe] for circe
-integration) or a library [Finch][finch] instead.
+integration) or a library like [Finch][finch] instead.
+
+There's not a lot of documentation, but we do publish the [API docs][api-docs].
 
 ## Contributors and participation
 
@@ -33,6 +35,7 @@ limitations under the License.
 [akka-http]: http://doc.akka.io/docs/akka-http/current/scala.html
 [akka-http-circe]: https://github.com/hseeberger/akka-http-json/tree/master/akka-http-circe
 [apache]: http://www.apache.org/licenses/LICENSE-2.0
+[api-docs]: https://circe.github.io/circe-spray/api/io/circe/spray/
 [circe]: https://github.com/circe/circe
 [code-of-conduct]: http://typelevel.org/conduct.html
 [contributing]: https://circe.github.io/circe/contributing.html
