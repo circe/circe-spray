@@ -5,8 +5,10 @@
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg)](https://gitter.im/circe/circe)
 [![Maven Central](https://img.shields.io/maven-central/v/io.circe/circe-spray_2.11.svg)](https://maven-badges.herokuapp.com/maven-central/io.circe/circe-spray_2.11)
 
-This project provides support for using [Spray][spray] for JSON parsing and printing with
-[circe][circe], a Scala library for encoding and decoding JSON to Scala types.
+This project provides support for using [circe][circe] to provide JSON marshallers for
+[Spray][spray]. Note that Spray is no longer being actively maintained, and new projects should
+typically use [Akka HTTP][akka-http] (with [akka-http-circe][akka-http-circe] for circe
+integration) or a library [Finch][finch] instead.
 
 ## Contributors and participation
 
@@ -28,9 +30,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+[akka-http]: http://doc.akka.io/docs/akka-http/current/scala.html
+[akka-http-circe]: https://github.com/hseeberger/akka-http-json/tree/master/akka-http-circe
 [apache]: http://www.apache.org/licenses/LICENSE-2.0
 [circe]: https://github.com/circe/circe
 [code-of-conduct]: http://typelevel.org/conduct.html
 [contributing]: https://circe.github.io/circe/contributing.html
+[finch]: https://github.com/finagle/finch
+[http4s]: https://github.com/http4s/http4s
 [spray]: https://github.com/spray/spray
 [typelevel]: http://typelevel.org/
