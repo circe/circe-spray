@@ -35,7 +35,7 @@ limitations under the License.
 [akka-http]: http://doc.akka.io/docs/akka-http/current/scala.html
 [akka-http-circe]: https://github.com/hseeberger/akka-http-json/tree/master/akka-http-circe
 [apache]: http://www.apache.org/licenses/LICENSE-2.0
-[api-docs]: https://circe.github.io/circe-spray/api/io/circe/spray/
+[api-docs]: https://circe.github.io/circe-spray/api/#io.circe.spray.package
 [circe]: https://github.com/circe/circe
 [code-of-conduct]: http://typelevel.org/conduct.html
 [contributing]: https://circe.github.io/circe/contributing.html
