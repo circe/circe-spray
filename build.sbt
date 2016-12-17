@@ -61,7 +61,7 @@ val root = project.in(file("."))
   .dependsOn(core)
 
 lazy val core = project.in(file("core"))
-  .settings(allSettings)
+  .settings(allSettings ++ ghpages.settings)
   .settings(
     moduleName := "circe-spray",
     docMappingsApiDir := "api",
@@ -73,6 +73,7 @@ lazy val core = project.in(file("core"))
       "-doc-source-url", scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
       "-sourcepath", baseDirectory.in(LocalRootProject).value.getAbsolutePath
     ),
+    git.remoteRepo := "git@github.com:circe/circe-spray.git",
     autoAPIMappings := true,
     apiURL := Some(url("https://circe.github.io/circe-spray/api/")),
     libraryDependencies ++= Seq(
