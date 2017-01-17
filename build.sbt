@@ -46,8 +46,8 @@ val baseSettings = Seq(
   libraryDependencies ++= Seq(
     "io.circe" %% "circe-core" % circeVersion,
     "io.circe" %% "circe-jawn" % circeVersion,
-    "io.circe" %% "circe-generic" % circeVersion % "test",
-    "io.circe" %% "circe-testing" % circeVersion % "test"
+    "io.circe" %% "circe-generic" % circeVersion % Test,
+    "io.circe" %% "circe-testing" % circeVersion % Test
   )
 )
 
@@ -86,11 +86,11 @@ lazy val core = project.in(file("core"))
        * exclude the transitive Shapeless 2.1 dependency to avoid conflicting
        * cross-version suffixes on 2.10.
        */
-      "io.spray" %% "spray-routing-shapeless2" % "1.3.3" % "test" exclude("com.chuusai", "shapeless_2.10.4"),
-      "io.spray" %% "spray-testkit" % "1.3.3" % "test",
-      "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
-      "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-      compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" % "test" cross CrossVersion.full)
+      "io.spray" %% "spray-routing-shapeless2" % "1.3.3" % Test exclude("com.chuusai", "shapeless_2.10.4"),
+      "io.spray" %% "spray-testkit" % "1.3.3" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.13.4" % Test,
+      "org.scalatest" %% "scalatest" % "3.0.1" % Test,
+      compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" % Test cross CrossVersion.full)
     ),
     mimaPreviousArtifacts := Set("io.circe" %% "circe-spray" % previousCirceSprayVersion)
   )
