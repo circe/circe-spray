@@ -15,7 +15,7 @@ val compilerOptions = Seq(
   "-Xfuture"
 )
 
-val circeVersion = "0.7.0-M2"
+val circeVersion = "0.7.0"
 val previousCirceSprayVersion = "0.7.0-M1"
 
 val baseSettings = Seq(
@@ -78,16 +78,9 @@ lazy val core = project.in(file("core"))
     apiURL := Some(url("https://circe.github.io/circe-spray/api/")),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor" % "2.3.9",
-      "io.spray" %% "spray-httpx" % "1.3.3",
-      /**
-       * spray-routing-shapeless2 depends on Shapeless 2.1, which uses a
-       * different suffix for Scala 2.10 than Shapeless 2.3 (the version brought
-       * in by circe-generic). Since this is only a test dependency, we simply
-       * exclude the transitive Shapeless 2.1 dependency to avoid conflicting
-       * cross-version suffixes on 2.10.
-       */
-      "io.spray" %% "spray-routing-shapeless2" % "1.3.3" % Test exclude("com.chuusai", "shapeless_2.10.4"),
-      "io.spray" %% "spray-testkit" % "1.3.3" % Test,
+      "io.spray" %% "spray-httpx" % "1.3.4",
+      "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
+      "io.spray" %% "spray-testkit" % "1.3.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.13.4" % Test,
       "org.scalatest" %% "scalatest" % "3.0.1" % Test,
       compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" % Test cross CrossVersion.full)
