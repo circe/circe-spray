@@ -1,5 +1,3 @@
-import com.typesafe.sbt.SbtGhPages.GhPagesKeys._
-
 organization in ThisBuild := "io.circe"
 
 val compilerOptions = Seq(
@@ -61,7 +59,8 @@ val root = project.in(file("."))
   .dependsOn(core)
 
 lazy val core = project.in(file("core"))
-  .settings(allSettings ++ ghpages.settings)
+  .enablePlugins(GhpagesPlugin)
+  .settings(allSettings)
   .settings(
     moduleName := "circe-spray",
     docMappingsApiDir := "api",
