@@ -143,7 +143,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="RootDecoder.html"><span class="name">RootDecoder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="underlying">underlying: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="io.circe.spray.RootDecoder.A">A</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="RootDecoder.html"><span class="name">RootDecoder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="underlying">underlying: <a href="https://circe.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="io.circe.spray.RootDecoder.A">A</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.11/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.11/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.circe.spray.package@RootDecoder[A]extendsProductwithSerializable" title="Permalink" target="_top">
@@ -152,10 +152,10 @@
     </span>
       <p class="shortcomment cmt">A type class that wraps a decoder that will only accept root JSON values
 (i.e., either JSON objects or arrays).</p><div class="fullcomment"><div class="comment cmt"><p>A type class that wraps a decoder that will only accept root JSON values
-(i.e., either JSON objects or arrays).</p><p>Because the core circe module does not provide subtypes of <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> that
+(i.e., either JSON objects or arrays).</p><p>Because the core circe module does not provide subtypes of <a href="https://circe.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> that
 provide this guarantee, we approximate it by creating instances for types
-that have both <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> and <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.RootEncoder" class="extype" target="_top">RootEncoder</a> instances, or that only have
-a <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> instance (and no <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>).
+that have both <a href="https://circe.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> and <a href="https://circe.github.io/circe/api/index.html#io.circe.RootEncoder" class="extype" target="_top">RootEncoder</a> instances, or that only have
+a <a href="https://circe.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a> instance (and no <a href="https://circe.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>).
 </p></div></div>
     </li></ol>
             </div>
@@ -207,7 +207,7 @@ a <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" 
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="RootDecoder$.html"><span class="name">RootDecoder</span></a><span class="result"> extends <span class="extype" name="io.circe.spray.LowPriorityRootDecoders">LowPriorityRootDecoders</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="RootDecoder$.html"><span class="name">RootDecoder</span></a><span class="result"> extends <span class="extype" name="io.circe.spray.LowPriorityRootDecoders">LowPriorityRootDecoders</span> with <a href="http://www.scala-lang.org/api/2.11.11/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.circe.spray.package@RootDecoder" title="Permalink" target="_top">
