@@ -67,7 +67,7 @@ lazy val core = project.in(file("core"))
     autoAPIMappings := true,
     apiURL := Some(url("https://circe.github.io/circe-spray/api/")),
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor" % "2.3.16",
+      "com.typesafe.akka" %% "akka-actor" % "2.5.19",
       "io.spray" %% "spray-httpx" % "1.3.4",
       "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
