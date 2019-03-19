@@ -72,7 +72,7 @@ lazy val core = project.in(file("core"))
       "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.13.5" % Test,
-      "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+      "org.scalatest" %% "scalatest" % "3.0.7" % Test,
       compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" % Test cross CrossVersion.full)
     ),
     mimaPreviousArtifacts := Set("io.circe" %% "circe-spray" % previousCirceSprayVersion)
