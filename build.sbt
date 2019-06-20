@@ -30,7 +30,6 @@ val baseSettings = Seq(
     Resolver.sonatypeRepo("snapshots")
   ),
   coverageHighlighting := true,
-  coverageScalacPluginVersion := "1.3.1",
   (scalastyleSources in Compile) ++= (unmanagedSourceDirectories in Compile).value,
   libraryDependencies ++= Seq(
     "io.circe" %% "circe-core" % circeVersion,
