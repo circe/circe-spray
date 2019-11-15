@@ -14,7 +14,7 @@ val compilerOptions = Seq(
   "-Xfuture"
 )
 
-val circeVersion = "0.11.1"
+val circeVersion = "0.11.2"
 val previousCirceSprayVersion = "0.10.0"
 
 val baseSettings = Seq(
