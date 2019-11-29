@@ -5,12 +5,12 @@ import io.circe.Errors
 import io.circe.generic.auto._
 import io.circe.syntax._
 import java.util.UUID
-import org.scalatest.FlatSpec
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import spray.http.StatusCodes.BadRequest
 import spray.routing.Directives._
 import spray.routing.{ HttpService, MalformedRequestContentRejection, RejectionHandler }
 import spray.testkit.ScalatestRouteTest
+import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
+import org.scalatest.flatspec.AnyFlatSpec
 
 case class Todo(id: UUID, title: String, completed: Boolean, order: Int)
 
@@ -45,7 +45,7 @@ object ErrorAccumulatingTodoRoute {
   }
 }
 
-class TodoRouteSuite extends FlatSpec with ScalatestRouteTest with GeneratorDrivenPropertyChecks with HttpService {
+class TodoRouteSuite extends AnyFlatSpec with ScalatestRouteTest with ScalaCheckDrivenPropertyChecks with HttpService {
   def actorRefFactory: ActorRefFactory = system
 
   "The fail-fast route" should "accept a partial todo and return a completed version" in {
