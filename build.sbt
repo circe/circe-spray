@@ -36,7 +36,8 @@ val baseSettings = Seq(
     "io.circe" %% "circe-jawn" % circeVersion,
     "io.circe" %% "circe-generic" % circeVersion % Test,
     "io.circe" %% "circe-testing" % circeVersion % Test
-  )
+  ),
+  classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.AllLibraryJars
 )
 
 val docMappingsApiDir = settingKey[String]("Subdirectory in site target directory for API docs")
@@ -71,7 +72,8 @@ lazy val core = project.in(file("core"))
       "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.3" % Test,
-      "org.scalatest" %% "scalatest" % "3.0.8" % Test,
+      "org.scalatest" %% "scalatest" % "3.1.0" % Test,
+      "org.scalatestplus" %% "scalatestplus-scalacheck" % "3.1.0.0-RC2" % Test,
       compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" % Test cross CrossVersion.full)
     ),
     mimaPreviousArtifacts := Set("io.circe" %% "circe-spray" % previousCirceSprayVersion)

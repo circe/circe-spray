@@ -1,7 +1,7 @@
 package io.circe.spray
 
 import io.circe.{ Decoder, Encoder, ObjectEncoder }
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import spray.httpx.unmarshalling._
 import spray.httpx.marshalling._
 import spray.http.{ ContentTypes, HttpCharsets, HttpEntity, MediaTypes }
@@ -39,7 +39,7 @@ object Employee {
     }
 }
 
-class JsonSupportSpec extends FlatSpec {
+class JsonSupportSpec extends AnyFlatSpec {
   import JsonSupport._
 
   "JsonSupport" should "provide unmarshalling support for a case class" in {
