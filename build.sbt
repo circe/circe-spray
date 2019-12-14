@@ -70,7 +70,7 @@ lazy val core = project.in(file("core"))
       "io.spray" %% "spray-httpx" % "1.3.4",
       "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
-      "org.scalacheck" %% "scalacheck" % "1.14.2" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.14.3" % Test,
       "org.scalatest" %% "scalatest" % "3.0.8" % Test,
       compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" % Test cross CrossVersion.full)
     ),
