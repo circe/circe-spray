@@ -88,6 +88,7 @@ lazy val noPublishSettings = Seq(
 lazy val publishSettings = Seq(
   releaseCrossBuild := true,
   releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+  releaseVcsSign := true,
   homepage := Some(url("https://github.com/circe/circe-spray")),
   licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
   publishMavenStyle := true,
