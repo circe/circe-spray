@@ -20,23 +20,21 @@ trait JsonSupport {
 
 trait FailFastUnmarshaller { this: JsonSupport =>
   implicit final def circeJsonUnmarshaller[A](implicit decoder: RootDecoder[A]): Unmarshaller[A] =
-    Unmarshaller[A](MediaTypes.`application/json`) {
-      case x: HttpEntity.NonEmpty =>
-        decode[A](x.asString(defaultCharset = HttpCharsets.`UTF-8`))(decoder.underlying) match {
-          case Right(a) => a
-          case Left(e) => throw e
-        }
+    Unmarshaller[A](MediaTypes.`application/json`) { case x: HttpEntity.NonEmpty =>
+      decode[A](x.asString(defaultCharset = HttpCharsets.`UTF-8`))(decoder.underlying) match {
+        case Right(a) => a
+        case Left(e)  => throw e
+      }
     }
 }
 
 trait ErrorAccumulatingUnmarshaller { this: JsonSupport =>
   implicit final def circeJsonUnmarshaller[A](implicit decoder: RootDecoder[A]): Unmarshaller[A] =
-    Unmarshaller[A](MediaTypes.`application/json`) {
-      case x: HttpEntity.NonEmpty =>
-        decodeAccumulating[A](x.asString(defaultCharset = HttpCharsets.`UTF-8`))(decoder.underlying) match {
-          case Validated.Valid(result) => result
-          case Validated.Invalid(errors) => throw Errors(errors)
-        }
+    Unmarshaller[A](MediaTypes.`application/json`) { case x: HttpEntity.NonEmpty =>
+      decodeAccumulating[A](x.asString(defaultCharset = HttpCharsets.`UTF-8`))(decoder.underlying) match {
+        case Validated.Valid(result)   => result
+        case Validated.Invalid(errors) => throw Errors(errors)
+      }
     }
 }
 

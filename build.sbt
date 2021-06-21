@@ -1,8 +1,20 @@
-organization in ThisBuild := "io.circe"
+ThisBuild / organization := "io.circe"
+ThisBuild / crossScalaVersions := Seq("2.11.12")
+ThisBuild / githubWorkflowPublishTargetBranches := Nil
+ThisBuild / githubWorkflowBuild := Seq(
+  WorkflowStep.Use(
+    UseRef.Public(
+      "codecov",
+      "codecov-action",
+      "v1"
+    )
+  )
+)
 
 val compilerOptions = Seq(
   "-deprecation",
-  "-encoding", "UTF-8",
+  "-encoding",
+  "UTF-8",
   "-feature",
   "-language:existentials",
   "-language:higherKinds",
@@ -19,10 +31,10 @@ val previousCirceSprayVersion = "0.10.0"
 
 val baseSettings = Seq(
   scalacOptions ++= compilerOptions,
-  scalacOptions in (Compile, console) ~= {
+  Compile / console / scalacOptions ~= {
     _.filterNot(Set("-Ywarn-unused-import"))
   },
-  scalacOptions in (Test, console) ~= {
+  Test / console / scalacOptions ~= {
     _.filterNot(Set("-Ywarn-unused-import"))
   },
   resolvers ++= Seq(
@@ -30,7 +42,7 @@ val baseSettings = Seq(
     Resolver.sonatypeRepo("snapshots")
   ),
   coverageHighlighting := true,
-  (scalastyleSources in Compile) ++= (unmanagedSourceDirectories in Compile).value,
+  (Compile / scalastyleSources) ++= (Compile / unmanagedSourceDirectories).value,
   libraryDependencies ++= Seq(
     "io.circe" %% "circe-core" % circeVersion,
     "io.circe" %% "circe-jawn" % circeVersion,
@@ -44,24 +56,24 @@ val docMappingsApiDir = settingKey[String]("Subdirectory in site target director
 
 val allSettings = baseSettings ++ publishSettings
 
-val root = project.in(file("."))
-  .settings(allSettings ++ noPublishSettings)
-  .aggregate(core)
-  .dependsOn(core)
+val root = project.in(file(".")).settings(allSettings ++ noPublishSettings).aggregate(core).dependsOn(core)
 
-lazy val core = project.in(file("core"))
+lazy val core = project
+  .in(file("core"))
   .enablePlugins(GhpagesPlugin)
   .settings(allSettings)
   .settings(
     moduleName := "circe-spray",
     docMappingsApiDir := "api",
-    addMappingsToSiteDir(mappings in (Compile, packageDoc), docMappingsApiDir),
+    addMappingsToSiteDir(Compile / packageDoc / mappings, docMappingsApiDir),
     ghpagesNoJekyll := true,
-    scalacOptions in (Compile, doc) ++= Seq(
+    Compile / doc / scalacOptions ++= Seq(
       "-groups",
       "-implicits",
-      "-doc-source-url", scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
-      "-sourcepath", baseDirectory.in(LocalRootProject).value.getAbsolutePath
+      "-doc-source-url",
+      scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
+      "-sourcepath",
+      (LocalRootProject / baseDirectory).value.getAbsolutePath
     ),
     git.remoteRepo := "git@github.com:circe/circe-spray.git",
     autoAPIMappings := true,
@@ -72,9 +84,9 @@ lazy val core = project.in(file("core"))
       "io.spray" %% "spray-routing-shapeless23" % "1.3.4" % Test,
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.15.2" % Test,
-      "org.scalatest" %% "scalatest" % "3.2.7" % Test,
-      "org.scalatestplus" %% "scalatestplus-scalacheck" % "3.1.0.0-RC2" % Test,
-      compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" % Test cross CrossVersion.full)
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.scalatestplus" %% "scalacheck-1-15" % "3.2.3.0" % Test,
+      compilerPlugin(("org.scalamacros" % "paradise" % "2.1.1" % Test).cross(CrossVersion.full))
     ),
     mimaPreviousArtifacts := Set("io.circe" %% "circe-spray" % previousCirceSprayVersion)
   )
@@ -92,14 +104,14 @@ lazy val publishSettings = Seq(
   homepage := Some(url("https://github.com/circe/circe-spray")),
   licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
   publishMavenStyle := true,
-  publishArtifact in Test := false,
+  Test / publishArtifact := false,
   pomIncludeRepository := { _ => false },
   publishTo := {
     val nexus = "https://oss.sonatype.org/"
     if (isSnapshot.value)
-      Some("snapshots" at nexus + "content/repositories/snapshots")
+      Some("snapshots".at(nexus + "content/repositories/snapshots"))
     else
-      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+      Some("releases".at(nexus + "service/local/staging/deploy/maven2"))
   },
   scmInfo := Some(
     ScmInfo(
