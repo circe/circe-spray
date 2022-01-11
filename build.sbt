@@ -85,7 +85,7 @@ lazy val core = project
       "io.spray" %% "spray-testkit" % "1.3.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.15.2" % Test,
       "org.scalatest" %% "scalatest" % "3.2.10" % Test,
-      "org.scalatestplus" %% "scalacheck-1-15" % "3.2.3.0" % Test,
+      "org.scalatestplus" %% "scalacheck-1-15" % "3.2.10.0" % Test,
       compilerPlugin(("org.scalamacros" % "paradise" % "2.1.1" % Test).cross(CrossVersion.full))
     ),
     mimaPreviousArtifacts := Set("io.circe" %% "circe-spray" % previousCirceSprayVersion)
